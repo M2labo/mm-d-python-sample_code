@@ -1,8 +1,16 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyUSB0', 115200)
+port = 'COM3'
+baudrate = 115200
 
+ser = serial.Serial()
+ser.port = port
+ser.baudrate = baudrate
+ser.timeout = 1
+ser.setDTR(False)
+ser.setRTS(False)
+ser.open()
 
 # joystick
 # left:center:right 0~63:64~127

@@ -1,5 +1,6 @@
 import serial
 import time
+import platform
 
 port = 'COM3'
 baudrate = 115200
@@ -8,8 +9,10 @@ ser = serial.Serial()
 ser.port = port
 ser.baudrate = baudrate
 ser.timeout = 1
-ser.setDTR(False)
-ser.setRTS(False)
+
+if platform.system() == 'Windows':
+    ser.setDTR(False)
+    ser.setRTS(False)
 ser.open()
 
 # joystick

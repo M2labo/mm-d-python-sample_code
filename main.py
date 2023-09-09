@@ -2,7 +2,9 @@ import serial
 import time
 import platform
 
-port = 'COM3'
+# windows port = 'COM3'
+
+port = '/dev/ttyUSB0'
 baudrate = 115200
 
 ser = serial.Serial()
@@ -47,7 +49,11 @@ time.sleep(1)
 ser.write(bytes([251, 1, 0, 0]))
 time.sleep(1)
 
+# outer_pwm_mode
+ser.write(bytes([251, 2, 0, 0]))
+time.sleep(1)
+
 
 # serial mode
-ser.write(bytes([251, 2, 0, 0]))
+ser.write(bytes([251, 3, 0, 0]))
 time.sleep(1)
